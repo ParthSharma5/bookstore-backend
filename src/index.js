@@ -17,7 +17,7 @@ app.use('/api/auth',authRoutes)
 app.use('/api/books',booksRoutes)
 
 app.get("/", (req, res) => {
-  res.send("Server is  rUNNING");
+  res.send("<h1>Server is  RUNNING</h1>");
 });
 
 app.listen(PORT, (req, res) => {

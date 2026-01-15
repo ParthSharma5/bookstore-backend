@@ -2,7 +2,7 @@ import express from "express";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 
-const router = express.Router(); //✅
+const router = express.Router(); 
 const generateToken = (userid) => {
   return jwt.sign({ userid }, process.env.JWT_SECRET, { expiresIn: "105d" });
 };
@@ -45,11 +45,8 @@ router.post("/register", async (req, res) => {
       password,
       profileImage,
     });
-    // now we have to save the new user info
     await user.save();
-    // NOW GENERATE TOKENS
     const token = generateToken(user._id);
-    // send token to the client
     res.status(201).json({
       token,
       user: {
@@ -57,6 +54,7 @@ router.post("/register", async (req, res) => {
         username: user.username,
         email: user.email,
         profileImage: user.profileImage,
+        createdAt: user.createdAt,
       },
     });
   } catch (error) {
@@ -95,6 +93,7 @@ router.post("/login", async (req, res) => {
         username: user.username,
         email: user.email,
         profileImage: user.profileImage,
+        createdAt: user.createdAt,
       },
     });
 
