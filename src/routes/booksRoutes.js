@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import express from "express";
 import Book from "../models/Book.js";
-import protectRoute from "../middleware/auth.middleware.js";
+import protectRoute from "../middleware/authMiddleware.js";
 
 import cloudinary from "../lib/cloudinary.js";
 const router = express.Router();
