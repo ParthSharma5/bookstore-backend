@@ -28,3 +28,21 @@ app.listen(PORT, (req, res) => {
   console.log(`Server is listening at Port:${PORT}`);
   connectDB();
 });
+
+
+// Add this test route in server.js (temporary)
+app.get("/api/test", (req, res) => {
+  res.json({ 
+    success: true, 
+    message: "Backend is working",
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.get("/api/recommendations/test", (req, res) => {
+  res.json({ 
+    success: true, 
+    message: "Recommendations route is working",
+    data: []
+  });
+});
